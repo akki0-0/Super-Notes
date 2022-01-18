@@ -54,6 +54,25 @@ function deleteNode(index){
     showNode();
 }
 
+//Implementing the search feature
+let search = document.getElementById("searchTxt")
+search.addEventListener('input',function(){
+    let searchVal = search.value.toLowerCase()
+    //getting the card element
+    let noteCard = document.getElementsByClassName('noteCard')
+    Array.from(noteCard).forEach(function(element) {
+        //getting the paragraph from our card element (not from document)
+        let cardTxt = element.getElementsByClassName('card-text')[0].innerText
+            if(cardTxt.toLowerCase().includes(searchVal)){
+                element.style.display = "block" //display is set to block since originally it is block
+            }          
+            else{
+                element.style.display = "none"
+            }
+        });
+    
+})
+
 function getNotes(){
     //getting notes from local storage
     let notes = localStorage.getItem('notes')
@@ -65,19 +84,3 @@ function getNotes(){
         notesObj = JSON.parse(notes)
     }
 }
-
-let search = document.getElementById("searchTxt")
-search.addEventListener('input',function(){
-    let searchVal = search.value.toLowerCase()
-    let noteCard = document.getElementsByClassName('noteCard')
-    Array.from(noteCard).forEach(function(element) {
-        let cardTxt = element.getElementsByTagName("p")[0].innerText
-            if(cardTxt.includes(searchVal)){
-                element.style.display = "block"
-            }          
-            else{
-                element.style.display = "none"
-            }
-        });
-    
-})
