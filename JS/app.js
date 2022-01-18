@@ -5,14 +5,20 @@ showNode();
 let addBtn = document.getElementById('addBtn')
 addBtn.addEventListener('click', function (e) {
     //Get value provided in text area
+    let addTitle = document.getElementById("addTitle")
     let addTxt = document.getElementById("addTxt")
     getNotes();
     //push is used with array, hence notesObj becomes array
-    notesObj.push(addTxt.value);
+    note = {
+        title:addTitle.value,
+        content:addTxt.value
+    }
+    notesObj.push(note);
     //setting the key "notes" with the value in text area
     localStorage.setItem("notes", JSON.stringify(notesObj))
     //removing the value from text area
     addTxt.value = ' '
+    addTitle.value=''
     showNode();
 })
 
@@ -27,8 +33,8 @@ function showNode() {
     html += `
     <div class="noteCard mx-2 my-2" style="width: 18rem;">
         <div class="card-body">
-            <h5 class="card-title">Note : ${index + 1}</h5>
-            <p class="card-text">${element}</p>
+            <h5 class="card-title">${element.title}</h5>
+            <p class="card-text">${element.content}</p>
             <button id="${index}" onclick="deleteNode(this.id)" class="btn btn-primary">Delete</button>
         </div>
     </div>
