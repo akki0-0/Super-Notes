@@ -22,7 +22,8 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0"></ul>
                 <form class="d-flex">
-                    <input id="searchTxt" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <input id="searchTxt" class="form-control me-2" type="search" placeholder="Search"
+                        aria-label="Search">
                     <button class="btn btn-outline-success" type="submit">Search</button>
                 </form>
             </div>
@@ -34,8 +35,13 @@
         <div class="card">
             <div class="card-body">
                 <h5 class="card-title">Add a note</h5>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">Title</span>
+                    <input type="text" id="addTitle" class="form-control" placeholder="Enter the title here!" aria-label="Title"
+                        aria-describedby="basic-addon1">
+                </div>
                 <div class="input-group" style="margin-bottom: 10px;">
-                    <textarea class="form-control" aria-label="With textarea" id="addTxt"></textarea>
+                    <textarea class="form-control" placeholder="Enter the content here!" aria-label="With textarea" id="addTxt"></textarea>
                 </div>
                 <button class="btn btn-primary" id="addBtn">Add</button>
             </div>
