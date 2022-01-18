@@ -25,10 +25,10 @@ function showNode() {
         //using html += since not using + will replace the created card with latest note
         //Giving the delete button id of index to remove the specific note only
     html += `
-    <div class="card mx-2 my-2" style="width: 18rem;">
+    <div class="noteCard mx-2 my-2" style="width: 18rem;">
         <div class="card-body">
             <h5 class="card-title">Note : ${index + 1}</h5>
-            <p class="card-text">${element}</P>
+            <p class="card-text">${element}</p>
             <button id="${index}" onclick="deleteNode(this.id)" class="btn btn-primary">Delete</button>
         </div>
     </div>
@@ -65,3 +65,19 @@ function getNotes(){
         notesObj = JSON.parse(notes)
     }
 }
+
+let search = document.getElementById("searchTxt")
+search.addEventListener('input',function(){
+    let searchVal = search.value.toLowerCase()
+    let noteCard = document.getElementsByClassName('noteCard')
+    Array.from(noteCard).forEach(function(element) {
+        let cardTxt = element.getElementsByTagName("p")[0].innerText
+            if(cardTxt.includes(searchVal)){
+                element.style.display = "block"
+            }          
+            else{
+                element.style.display = "none"
+            }
+        });
+    
+})
